@@ -41,10 +41,6 @@ public class XMLFormatter {
 		scan.close();
 	}
 
-	/**
-	 * We can expect: <Save sfsdf="aa"> OR <save> OR <save>true</save>
-	 * OR </save>
-	 */
 	private static String makeLinesSecondPass(String next, boolean verbose) {
 		Scanner scan = new Scanner(next);
 		String result = "";
