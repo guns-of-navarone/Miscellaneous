@@ -1,0 +1,66 @@
+
+.ui_element_hearts {
+    background: url("../assets/images/hearts-1.jpg");
+	height: 128px;
+	width:91px;
+
+}
+.hearts_cover {
+    background-position: 90px 128px;
+}
+
+.hearts_joker {
+	background-position: 193px 128px;
+}
+
+.hearts_king {
+	background-position: 296px 128px;
+}
+
+.hearts_queen {
+	background-position: 398px 128px;
+}
+
+.hearts_jack {
+	background-position: 500px 128px;
+}
+
+.hearts_ten {
+	background-position: 91px 260px;
+}
+
+.hearts_nine {
+	background-position: 193px 260px;
+}
+
+.hearts_eight {
+	background-position: 295px 260px;
+}
+
+.hearts_seven {
+	background-position: 397px 260px;
+}
+
+.hearts_six {
+	background-position: 500px 260px;
+}
+
+.hearts_five {
+	background-position: 91px 394px;
+}
+
+.hearts_four {
+	background-position: 193px 394px;
+}
+
+.hearts_three {
+	background-position: 295px 394px;
+}
+
+.hearts_two {
+	background-position: 397px 394px;
+}
+
+.hearts_ace {
+	background-position: 500px 394px;
+}

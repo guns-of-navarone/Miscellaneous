@@ -1,0 +1,132 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href="css/clubs.css"/>
+<link rel="stylesheet" type="text/css" href="css/hearts.css"/>
+<link rel="stylesheet" type="text/css" href="css/diamonds.css"/>
+<link rel="stylesheet" type="text/css" href="css/spades.css"/>
+<script type="text/javascript" src="vendor/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="vendor/mustache.js"></script>
+
+<script>
+$("document").ready(function() {
+	var template_cards = $("#centerpiece-cards").html();
+	var result = Mustache.render(template_cards, {
+		"cover" : "ui_element_clubs clubs_cover",
+		"card1" : "ui_element_clubs clubs_cover",
+		"card2" : "ui_element_clubs clubs_cover",
+		"card3" : "ui_element_clubs clubs_cover",
+		"card4" : "ui_element_clubs clubs_cover",
+		"card5" : "ui_element_clubs clubs_cover",
+		"description" : "Walk your dog"
+	} );
+	$("#baize").html(result);
+	
+	var template = $("#players").html();
+	var result = Mustache.render(template, {
+		"player-count" : "1",
+		"card-count-first": "1",
+		"card-count-second": "2",
+		"name": "Sidonia"
+	} );
+	$("#player1").html(result);
+	
+	var result = Mustache.render(template, {
+		"player-count" : "2",
+		"card-count-first": "1",
+		"card-count-second": "2",
+		"name": "Lavina"
+	} );
+	$("#player2").html(result);
+	
+	var result = Mustache.render(template, {
+		"player-count" : "3",
+		"card-count-first": "1",
+		"card-count-second": "2",
+		"name": "Jerrash"
+	} );
+	$("#player3").html(result);
+	
+	var result = Mustache.render(template, {
+		"player-count" : "4",
+		"card-count-first": "1",
+		"card-count-second": "2",
+		"name": "Ethan"
+	} );
+	$("#player4").html(result);
+ });
+ 
+function deal(){
+$("#card1").css("display","block");
+$("#card2").css("display","block");
+$("#card3").css("display","block");
+$("#play").attr("onClick","");
+$("#play").click(flop);
+$("#play").text("Flop");
+}
+
+function flop(){
+	var template = $("#centerpiece-cards").html();
+	var result = Mustache.render(template, {
+		"cover" : "ui_element_clubs clubs_cover",
+		"card1" : "ui_element_clubs clubs_king",
+		"card2" : "ui_element_hearts hearts_king",
+		"card3" : "ui_element_spades spades_queen",
+		"card4" : "ui_element_diamonds diamonds_ace",
+		"card5" : "ui_element_spades spades_five",
+		"description" : "Walk your dog"
+	} );
+	$("#baize").html(result);
+	$("#card1").css("display","block");
+	$("#card2").css("display","block");
+	$("#card3").css("display","block");
+	$("#play").attr("onClick","");
+	$("#play").click(turn);
+	$("#play").text("Turn");
+}  
+
+function turn(){
+	$("#card4").css("display","block");
+	$("#play").attr("onClick","");
+	$("#play").click(river);
+	$("#play").text("River");
+}
+
+function river(){
+	$("#card5").css("display","block");
+}
+</script>
+<script type="text/template" id="centerpiece-cards">
+	<div class="itemTemplateWrapper">
+		<div id="card1" class="{{card1}}" style="float:left;display:none"></div>
+		<div id="card2" class="{{card2}}" style="float:left;display:none"></div>
+		<div id="card3" class="{{card3}}" style="float:left;display:none"></div>
+		<div id="card4" class="{{card4}}" style="float:left;display:none"></div>
+		<div id="card5" class="{{card5}}" style="float:left;display:none"></div>
+	</div>
+</script>
+
+<script type="text/template" id="players">
+	<div id="player{{player-count}}-name" class="player-name"><span>{{name}}</span></div>
+	<div class="player{{player-count}}-card{{card-count-first}} clubs_cover ui_element_clubs"></div>
+	<div class="player{{player-count}}-card{{card-count-second}} clubs_cover ui_element_clubs"></div>
+</script>
+
+</head>
+<body>
+<!--div id="cover" class="ui_element_clubs clubs_cover"></div>
+<div id="king_clubs" class="ui_element_clubs clubs_king"></div-->
+
+<div id="container">	
+	<div id="table">
+		<button id="shuffle" onClick="shuffle();">Shuf</button>
+		<button id="play" onClick="deal();">Deal</button>
+		<div id="player1"></div>
+		<div id="player2"></div>	
+		<div id="player3"></div>	
+		<div id="player4"></div>	
+		<div id="baize"></div>
+	</div>
+</div>
+</body>
+</html>
